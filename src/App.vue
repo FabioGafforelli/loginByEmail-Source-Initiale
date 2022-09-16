@@ -9,15 +9,15 @@
       <router-link to="/">Go to Home</router-link>
       <img alt="Logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
       <div class="wrapper" id="signOut">
-        <div><SignIn msg="User, please sign in !" /></div>
+        <div><SignIn msg="Utilisateur, merci de te connecter !" /></div>
         <label>email: </label><br>
         <input type="email" required v-model="email" placeholder="username@domain.tld"><br>
         <label>password: </label><br>
         <input type="password" required v-model="passwd" ><br>
-        <button v-on:click="register()">Sign Up</button>
-        <button v-on:click="login()">Sign In</button>
+        <button v-on:click="register()">S'inscrire</button>
+        <button v-on:click="login()">Se connecter</button>
         <p>
-        <label id="status"> You are not yet connected </label><br>  
+        <label id="status"> Vous n'êtes pas encore connecté </label><br>  
         </p>
       </div>
     </header>
