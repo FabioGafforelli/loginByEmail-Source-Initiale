@@ -9,15 +9,15 @@
       <router-link to="/">Go to Home</router-link>
       <img alt="Logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
       <div class="wrapper" id="signOut">
-        <div><SignIn msg="Utilisateur, merci de te connecter !" /></div>
+        <div><SignIn msg="User, please sign in !" /></div>
         <label>email: </label><br>
         <input type="email" required v-model="email" placeholder="username@domain.tld"><br>
         <label>password: </label><br>
         <input type="password" required v-model="passwd" ><br>
-        <button v-on:click="register()">S'inscrire</button>
+        <button v-on:click="register()">S'inscrire'</button>
         <button v-on:click="login()">Se connecter</button>
         <p>
-        <label id="status"> Vous n'êtes pas encore connecté </label><br>  
+        <label id="status"> You are not yet connected </label><br>  
         </p>
       </div>
     </header>
@@ -38,34 +38,34 @@
     methods: {  
       //this method allows a new user to sign up the system. Once done, the user receives an email
       //asking for account validation. Once the validation made the user is added to the system
-      async register(){
+      async register(){ 
         try { 
-        const { user, session, error } = await supabase.auth.signUp({ 
-          email: this.email, 
-          password: this.passwd, 
-        }); 
-        if (error) throw error; 
-        document.getElementById('status').innerHTML='Please validate the received email !' 
-      } catch (error) { 
-        alert(error.error_description || error.message); 
-      }  
-    }
-      },
+          const { user, session, error } = await supabase.auth.signUp({ 
+            email: this.email, 
+            password: this.passwd, 
+          }); 
+          if (error) throw error; 
+          document.getElementById('status').innerHTML='Please validate the received email !' 
+        } catch (error) { 
+          alert(error.error_description || error.message); 
+        }  
+      }, 
+      
       //this method allows the already registred user to log in the system.
       async login(){
         try { 
-        const { user, session, error } = await supabase.auth.signIn({ 
-          email: this.email, 
-          password: this.passwd, 
-        }); 
-        if (error) throw error; 
-        document.getElementById('status').innerHTML='You are now logged !' 
-      } catch (error) { 
-        alert(error.error_description || error.message); 
-      }  
+          const { user, session, error } = await supabase.auth.signIn({ 
+            email: this.email, 
+            password: this.passwd, 
+          });
+          if (error) throw error; 
+          document.getElementById('status').innerHTML='Vous êtes connecté !' 
+        } catch (error) { 
+          alert(error.error_description || error.message); 
+        }  
       }
-    }  
-
+      } 
+  }
   </script>
   
   <style>
