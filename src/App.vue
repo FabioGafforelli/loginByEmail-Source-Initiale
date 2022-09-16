@@ -16,6 +16,7 @@
         <input type="password" required v-model="passwd" ><br>
         <button v-on:click="register()">S'inscrire'</button>
         <button v-on:click="login()">Se connecter</button>
+        <button v-on:click="reset()">Reset mot de passe</button>
         <p>
         <label id="status"> You are not yet connected </label><br>  
         </p>
@@ -63,7 +64,17 @@
         } catch (error) { 
           alert(error.error_description || error.message); 
         }  
+      },
+      async reset(){
+        try { 
+          const { data, error } = await supabase.auth.api.resetPasswordForEmail(this.email)
+          if (error) throw error; 
+          document.getElementById('status').innerHTML='Check your mail !' 
+        } catch (error) { 
+          alert(error.error_description || error.message); 
+        }  
       }
+      
       } 
   }
   </script>
